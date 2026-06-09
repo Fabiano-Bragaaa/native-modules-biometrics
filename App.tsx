@@ -7,26 +7,23 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
-type BiometryType = 'FaceID' | 'TouchID' | 'Fingerprint' | 'None' | null;
+import NativeBiometrics, {
+  type AuthErrorCode,
+  type BiometryType,
+  parseAuthError,
+  parseBiometryType,
+} from './specs/NativeBiometrics';
 
 type AuthStatus = 'idle' | 'loading' | 'success' | 'error';
 
-type AuthError =
-  | 'UserCancel'
-  | 'UserFallback'
-  | 'BiometryNotAvailable'
-  | 'BiometryLockout'
-  | null;
-
 export default function App() {
-  const [biometryType, setBiometryType] = useState<BiometryType>(null);
+  const [biometryType, setBiometryType] = useState<BiometryType | null>(null);
   const [authStatus, setAuthStatus] = useState<AuthStatus>('idle');
-  const [authError, setAuthError] = useState<AuthError>(null);
+  const [authError, setAuthError] = useState<AuthErrorCode | null>(null);
 
   async function handleCheckSupport() {
-    // placeholder — será substituído pelo TurboModule
-    setBiometryType('FaceID');
+    const result = await NativeBiometrics.isSupportedAsync();
+    setBiometryType(parseBiometryType(result.biometryType));
   }
 
   async function handleAuthenticate() {
@@ -35,9 +32,16 @@ export default function App() {
     setAuthStatus('loading');
     setAuthError(null);
 
-    // placeholder — será substituído pelo TurboModule
-    await new Promise(r => setTimeout(r, 1500));
-    setAuthStatus('success');
+    const result = await NativeBiometrics.authenticateAsync(
+      'Confirme sua identidade para continuar.',
+    );
+
+    if (result.success) {
+      setAuthStatus('success');
+    } else {
+      setAuthStatus('error');
+      setAuthError(parseAuthError(result.error));
+    }
   }
 
   return (
@@ -80,7 +84,8 @@ export default function App() {
                 styles.buttonDisabled,
             ]}
             onPress={handleAuthenticate}
-            disabled={!biometryType || biometryType === 'None'}>
+            disabled={!biometryType || biometryType === 'None'}
+          >
             <Text style={styles.buttonText}>Autenticar</Text>
           </TouchableOpacity>
         </View>
