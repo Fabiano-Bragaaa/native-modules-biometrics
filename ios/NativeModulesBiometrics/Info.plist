@@ -35,8 +35,6 @@
 	</dict>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Autenticação biométrica para acessar o app com segurança.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

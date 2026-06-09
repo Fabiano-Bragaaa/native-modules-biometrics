@@ -12,6 +12,7 @@
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9D0512F02FD8B11B0083CCCB /* RCTNativeBiometrics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9D0512EF2FD8B11B0083CCCB /* RCTNativeBiometrics.mm */; };
+		9D0512F22FD8BEB50083CCCB /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0512F12FD8BEB50083CCCB /* LocalAuthentication.framework */; };
 		D27AB56270CF67C2598936B0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		9D0512ED2FD8B11B0083CCCB /* NativeModulesBiometrics-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NativeModulesBiometrics-Bridging-Header.h"; sourceTree = "<group>"; };
 		9D0512EE2FD8B11B0083CCCB /* RCTNativeBiometrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeBiometrics.h; sourceTree = "<group>"; };
 		9D0512EF2FD8B11B0083CCCB /* RCTNativeBiometrics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTNativeBiometrics.mm; sourceTree = "<group>"; };
+		9D0512F12FD8BEB50083CCCB /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0512F22FD8BEB50083CCCB /* LocalAuthentication.framework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-NativeModulesBiometrics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +61,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D0512F12FD8BEB50083CCCB /* LocalAuthentication.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-NativeModulesBiometrics.a */,
 			);
@@ -284,6 +288,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PRXR2F3W82;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NativeModulesBiometrics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
@@ -315,6 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PRXR2F3W82;
 				INFOPLIST_FILE = NativeModulesBiometrics/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
