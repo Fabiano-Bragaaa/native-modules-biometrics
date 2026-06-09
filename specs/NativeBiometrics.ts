@@ -34,3 +34,29 @@ export interface Spec extends TurboModule {
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('NativeBiometrics');
+
+// Type guards — convertem os `string` que o Codegen retorna para os union types corretos
+
+export function parseBiometryType(value: string): BiometryType {
+  if (
+    value === 'FaceID' ||
+    value === 'TouchID' ||
+    value === 'Fingerprint' ||
+    value === 'None'
+  ) {
+    return value;
+  }
+  return 'None';
+}
+
+export function parseAuthError(value: string | undefined): AuthErrorCode | null {
+  if (
+    value === 'UserCancel' ||
+    value === 'UserFallback' ||
+    value === 'BiometryNotAvailable' ||
+    value === 'BiometryLockout'
+  ) {
+    return value;
+  }
+  return null;
+}
